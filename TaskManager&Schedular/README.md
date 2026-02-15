@@ -121,6 +121,11 @@ task-manager/
 └── README.md           # This file
 ```
 
+---
+![dashboard](https://github.com/Coddiction-101/cpp_projects/blob/main/TaskManager%26Schedular/snapshots/dashboard.png)
+
+---
+
 ## Version History
 - **v1.0** (Feb 2026) - Initial release with core features
 
