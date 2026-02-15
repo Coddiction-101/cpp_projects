@@ -25,8 +25,8 @@ A command-line task management system built in C++ for organizing daily tasks wi
 
 1. **Clone or download the project**
    ```bash
-   git clone <your-repo-url>
-   cd task-manager
+   git clone https://github.com/Coddiction-101/cpp_projects.git
+   cd cpp_projects/TaskManager\&Schedular
    ```
 
 2. **Compile the program**
