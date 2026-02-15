@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-class task
+class Task
 {
 private:
     string title;
@@ -15,7 +15,7 @@ private:
 
 public:
     // Constructor
-    task(string t, string desc, string p, string d)
+    Task(string t, string desc, string p, string d)
     {
         title = t;
         description = desc;
@@ -39,20 +39,20 @@ public:
     // Displaying Tasks
     void display()
     {
-        cout << "\n ------------------------------------\n";
+        cout << "\n------------------------------------\n";
         cout << "Title: " << title << endl;
         cout << "Description: " << description << endl;
         cout << "Priority: " << priority << endl;
         cout << "Deadline: " << deadline << endl;
         cout << "Status: " << (completed ? "✓ Completed" : "○ Pending") << endl;
-        cout << "-----------------------------------------\n";
+        cout << "------------------------------------\n";
     }
 };
 
 class TaskManager
 {
 private:
-    vector<task> tasks;
+    vector<Task> tasks;
     string filename = "tasks.txt";
 
 public:
@@ -61,7 +61,7 @@ public:
         string title, desc, priority, deadline;
 
         cin.ignore();
-        cout << "\n Enter task title: ";
+        cout << "\nEnter task title: ";
         getline(cin, title);
 
         cout << "Enter description: ";
@@ -73,7 +73,7 @@ public:
         cout << "Enter deadline [DD/MM/YYYY]: ";
         getline(cin, deadline);
 
-        task newTask(title, desc, priority, deadline);
+        Task newTask(title, desc, priority, deadline);
         tasks.push_back(newTask);
 
         cout << "\n✓ Task added successfully!\n";
@@ -84,11 +84,11 @@ public:
     {
         if (tasks.empty())
         {
-            cout << "\n No tasks found!\n";
+            cout << "\nNo tasks found!\n";
             return;
         }
 
-        cout << "\n------------------- All Tasks ---------------------\n";
+        cout << "\n=================== ALL TASKS ===================\n";
         for (int i = 0; i < tasks.size(); i++)
         {
             cout << "\nTask #" << (i + 1);
@@ -96,7 +96,7 @@ public:
         }
     }
 
-    // Priority
+    // View by Priority
     void viewByPriority()
     {
         string priority;
@@ -104,7 +104,7 @@ public:
         cin >> priority;
 
         bool found = false;
-        cout << "\n ------------------------ " << priority << " Priority Tasks -------------------\n";
+        cout << "\n============ " << priority << " PRIORITY TASKS ============\n";
 
         for (int i = 0; i < tasks.size(); i++)
         {
@@ -118,7 +118,7 @@ public:
 
         if (!found)
         {
-            cout << " No tasks with: " << priority << " priority.\n";
+            cout << "No tasks with " << priority << " priority.\n";
         }
     }
 
@@ -142,7 +142,7 @@ public:
         }
         else
         {
-            cout << "\nInvalid task number!\n";
+            cout << "\n❌ Invalid task number!\n";
         }
     }
 
@@ -166,7 +166,7 @@ public:
         }
         else
         {
-            cout << "\nInvalid task number!\n";
+            cout << "\n❌ Invalid task number!\n";
         }
     }
 
@@ -183,18 +183,18 @@ public:
             }
         }
 
-        cout << "\n----------- Statistics -----------------\n";
+        cout << "\n============= STATISTICS =============\n";
         cout << "Total tasks: " << total << endl;
         cout << "Completed: " << completed << endl;
         cout << "Pending: " << (total - completed) << endl;
-        cout << " --------------------------------------------\n";
+        cout << "======================================\n";
     }
 
     void saveToFile()
     {
         ofstream file(filename);
 
-        for (int i = 0; i < tasks.size(); i++) // ✅ FIXED: Added < operator
+        for (int i = 0; i < tasks.size(); i++)
         {
             file << tasks[i].getTitle() << "|"
                  << tasks[i].getDescription() << "|"
@@ -222,9 +222,9 @@ public:
             getline(file, priority, '|');
             getline(file, deadline, '|');
             file >> completed;
-            file.ignore(); // skip the new line
+            file.ignore();
 
-            task newTask(title, desc, priority, deadline);
+            Task newTask(title, desc, priority, deadline);
             if (completed)
             {
                 newTask.markComplete();
@@ -238,19 +238,18 @@ public:
 int main()
 {
     TaskManager manager;
-    manager.loadFromFile(); // load existing tasks as the progress starts
+    manager.loadFromFile();
 
     int choice;
 
     cout << "\n";
-    cout << "=================================================================\n";
-    cout << " TASK MANAGER & SCHEDULER\n";
-    cout << " =================================================================\n";
+    cout << "=================================================\n";
+    cout << "        TASK MANAGER & SCHEDULER\n";
+    cout << "=================================================\n";
 
     while (true)
     {
-        cout << "\n ================== MENU ===================================\n";
-
+        cout << "\n================= MENU ==================\n";
         cout << "1. Add Task\n";
         cout << "2. View All Tasks\n";
         cout << "3. View By Priority\n";
@@ -258,9 +257,8 @@ int main()
         cout << "5. Delete Task\n";
         cout << "6. Statistics\n";
         cout << "7. Exit\n";
-
-        cout << " ==============================================\n";
-        cout << "Enter your choice:\n";
+        cout << "=========================================\n";
+        cout << "Enter your choice: ";
         cin >> choice;
 
         switch (choice)
@@ -283,14 +281,13 @@ int main()
         case 6:
             manager.showStats();
             break;
-
         case 7:
             cout << "\n✓ Tasks saved! Goodbye!\n";
             return 0;
-
         default:
             cout << "\n❌ Invalid choice! Try again.\n";
         }
     }
+
     return 0;
 }
