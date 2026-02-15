@@ -130,6 +130,9 @@ task-manager/
 ### Dashboard Screen
 ![Dashboard Screenshot](https://github.com/Coddiction-101/cpp_projects/blob/main/TaskManager%26Schedular/snapshots/dashboard.png)
 
+### Statistics Screen
+![Statistics Screenshot](https://github.com/Coddiction-101/cpp_projects/blob/main/TaskManager%26Schedular/snapshots/statistics.png)
+
 ---
 
 ## Version History
