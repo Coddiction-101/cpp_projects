@@ -127,6 +127,9 @@ task-manager/
 ### Add Task Screen
 ![Add Task Screenshot](https://github.com/Coddiction-101/cpp_projects/blob/main/TaskManager%26Schedular/snapshots/addTask.png)
 
+### Dashboard Screen
+![Dashboard Screenshot](https://github.com/Coddiction-101/cpp_projects/blob/main/TaskManager%26Schedular/snapshots/dashboard.png)
+
 ---
 
 ## Version History
