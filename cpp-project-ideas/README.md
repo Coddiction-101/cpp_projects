@@ -12,7 +12,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 
 | Category | Projects | Status |
 |---|---|---|
-| [🛠️ Tools & Utilities](./Tools-and-Utilities/README.md) | 6 | 🔨 In Progress |
+| [🛠️ Tools & Utilities](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities) | 6 | 🔨 In Progress |
 
 > More categories coming soon: Games & Simulations, DSA & Algorithms, Systems & Low-level, Networking, Security, Data & Finance
 
