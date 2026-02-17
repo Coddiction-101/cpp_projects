@@ -1,4 +1,3 @@
----
 # 📊 System Resource Monitor
 
 **Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐⭐ | **Status:** 📋 Planned
@@ -36,4 +35,3 @@ A real-time terminal dashboard that displays CPU usage, RAM utilization, disk sp
 
 [← Back to Tools & Utilities](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities)
 
----
