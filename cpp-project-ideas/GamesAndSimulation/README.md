@@ -10,7 +10,7 @@ Fun, logic-heavy C++ projects that teach real-time input, game state management,
 | 02 | [Chess Engine](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Chess-Engine) | ⭐⭐⭐⭐⭐ | 📋 Planned | Move validation, Minimax AI |
 | 03 | [Zombie Survival Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Zombie-Survival) | ⭐⭐⭐⭐ | 📋 Planned | Random events, Game state, Day/night cycle |
 | 04 | [Minesweeper](./Minesweeper/README.md) | ⭐⭐⭐ | 📋 Planned | 2D grid logic, Flood fill algorithm |
-| 05 | [Typing Speed Tester](./Typing-Speed-Tester/README.md) | ⭐⭐ | 📋 Planned | Real-time input, Timer, String comparison |
+| 05 | [Typing Speed Tester](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Typing-Speed-Tester) | ⭐⭐ | 📋 Planned | Real-time input, Timer, String comparison |
 | 06 | [Maze Generator & Solver](./Maze-Generator/README.md) | ⭐⭐⭐⭐ | 📋 Planned | Recursive backtracking, BFS/DFS pathfinding |
 
 ---
