@@ -22,7 +22,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 
 | Project | Category | Status | Difficulty |
 |---|---|---|---|
-| [Task Manager & Scheduler](./Tools-and-Utilities/Task-Manager/README.md) | Tools & Utilities | ✅ Built | ⭐⭐⭐ |
+| [Task Manager & Scheduler](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) | Tools & Utilities | ✅ Built | ⭐⭐⭐ |
 | [Banking System - ATM Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) | Tools & Utilities | ✅ Built | ⭐⭐⭐⭐ |
 | [File Organizer](./Tools-and-Utilities/File-Organizer/README.md) | Tools & Utilities | 🔨 In Progress | ⭐⭐⭐ |
 | [Password Manager](./Tools-and-Utilities/Password-Manager/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐ |
