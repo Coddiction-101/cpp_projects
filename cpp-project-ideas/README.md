@@ -29,7 +29,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 | [Resource Monitor](./Tools-and-Utilities/Resource-Monitor/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 | [Terminal Text Editor](./Tools-and-Utilities/Terminal-Text-Editor/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐⭐ |
 | [Expression Calculator](./Tools-and-Utilities/Expression-Calculator/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
-| [Port Scanner](./Tools-and-Utilities/Port-Scanner/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
+| [Port Scanner](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Port-Scanner) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 
 ---
 
