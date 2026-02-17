@@ -12,7 +12,7 @@ Practical, real-world C++ tools that solve everyday problems. These projects foc
 | 04 | [Password Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Password-Manager) | ⭐⭐⭐ | 📋 Planned | Encryption, Hashing |
 | 05 | [Resource Monitor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Resource-Monitor) | ⭐⭐⭐⭐ | 📋 Planned | System Calls, Threading |
 | 06 | [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor) | ⭐⭐⭐⭐⭐ | 📋 Planned | Raw Input, Buffer Mgmt |
-| 07 | [Expression Calculator](./Expression-Calculator/README.md) | ⭐⭐⭐⭐ | 📋 Planned | Tokenizer, Stack Eval |
+| 07 | [Expression Calculator](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Expression-Calculator) | ⭐⭐⭐⭐ | 📋 Planned | Tokenizer, Stack Eval |
 | 08 | [Port Scanner](./Port-Scanner/README.md) | ⭐⭐⭐⭐ | 📋 Planned | Sockets, Threading |
 
 ---
