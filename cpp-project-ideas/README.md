@@ -43,7 +43,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 ### ✅ Banking System - ATM Simulator
 > A full ATM simulator with account management, PIN authentication, transfers, and transaction history.
 - **Concepts:** OOP, Map, Pointers, File I/O, Authentication
-- **Repo:** [View Code](#)
+- **Repo:** [View Code](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation)
 
 ---
 
