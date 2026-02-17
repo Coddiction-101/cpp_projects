@@ -8,9 +8,10 @@
 using namespace std;
 
 // ================================================================
-//  Banking System - ATM Simulator
+//  Banking System - ATM Simulator v1.0
 //  Features: Account Management, Transactions, File Persistence
 // ================================================================
+
 class BankAccount
 {
 private:
@@ -25,13 +26,13 @@ public:
     // Constructor
     BankAccount(string accNum, string name, string p, string type, double initialBalance = 0)
     {
-        accountNumber = accNum;
-        holderName = name;
-        pin = p;
-        accountType = type;
-        balance = initialBalance;
+        accountNumber  = accNum;
+        holderName     = name;
+        pin            = p;
+        accountType    = type;
+        balance        = initialBalance;
 
-        string transaction = "Account created with balance: $" + to_string(initialBalance); // ✅ Fixed typo
+        string transaction = "Account created with balance: $" + to_string(initialBalance);
         transactionHistory.push_back(transaction);
     }
 
@@ -41,7 +42,7 @@ public:
     string getAccountType()   { return accountType; }
     double getBalance()       { return balance; }
 
-    // PIN verification ✅ Fixed naming convention
+    // PIN verification
     bool verifyPin(string enteredPin)
     {
         return pin == enteredPin;
@@ -58,7 +59,7 @@ public:
         balance += amount;
         string transaction = "Deposited: $" + to_string(amount) + " | New Balance: $" + to_string(balance);
         transactionHistory.push_back(transaction);
-        cout << "\n✓ Successfully deposited $" << amount << endl;
+        cout << "\n✓ Successfully deposited $" << fixed << setprecision(2) << amount << endl;
     }
 
     // Withdraw money
@@ -66,7 +67,7 @@ public:
     {
         if (amount <= 0)
         {
-            cout << "\n❌ Invalid amount!\n"; // ✅ Fixed: was showing deposit message
+            cout << "\n❌ Invalid amount!\n";
             return false;
         }
         if (amount > balance)
@@ -74,11 +75,10 @@ public:
             cout << "\n❌ Insufficient balance!\n";
             return false;
         }
-
         balance -= amount;
-        string transaction = "Withdrawn: $" + to_string(amount) + " | New Balance: $" + to_string(balance); // ✅ Fixed missing ":"
+        string transaction = "Withdrawn: $" + to_string(amount) + " | New Balance: $" + to_string(balance);
         transactionHistory.push_back(transaction);
-        cout << "\n✓ Successfully withdrawn $" << amount << endl;
+        cout << "\n✓ Successfully withdrawn $" << fixed << setprecision(2) << amount << endl;
         return true;
     }
 
@@ -95,7 +95,6 @@ public:
             cout << "\n❌ Insufficient balance!\n";
             return false;
         }
-
         balance -= amount;
         return true;
     }
@@ -104,7 +103,7 @@ public:
     void receiveTransfer(double amount, string fromAccount)
     {
         balance += amount;
-        string transaction = "Received $: " + to_string(amount) + " from A/C: " + fromAccount; // ✅ Fixed spacing
+        string transaction = "Received $: " + to_string(amount) + " from A/C: " + fromAccount;
         transactionHistory.push_back(transaction);
     }
 
@@ -118,10 +117,10 @@ public:
     void displayAccountInfo()
     {
         cout << "\n================ ACCOUNT INFORMATION ================\n";
-        cout << "Account Number: " << accountNumber << endl;
-        cout << "Holder Name:    " << holderName << endl;
-        cout << "Account Type:   " << accountType << endl; // ✅ Fixed missing ":"
-        cout << "Current Balance: $" << fixed << setprecision(2) << balance << endl; // ✅ Fixed missing ":"
+        cout << "Account Number:  " << accountNumber << endl;
+        cout << "Holder Name:     " << holderName << endl;
+        cout << "Account Type:    " << accountType << endl;
+        cout << "Current Balance: $" << fixed << setprecision(2) << balance << endl;
         cout << "=====================================================\n";
     }
 
@@ -131,7 +130,7 @@ public:
         cout << "\n============== TRANSACTION HISTORY ==============\n";
         if (transactionHistory.empty())
         {
-            cout << "No transactions yet.\n"; // ✅ Fixed extra semicolon in string
+            cout << "No transactions yet.\n";
         }
         else
         {
@@ -145,7 +144,7 @@ public:
 
     // File saving helpers
     string getPin() { return pin; }
-    vector<string> getTransactions() { return transactionHistory; } // ✅ Fixed plural
+    vector<string> getTransactions() { return transactionHistory; }
 };
 
 // ================================================================
@@ -154,9 +153,9 @@ public:
 class BankingSystem
 {
 private:
-    map<string, BankAccount> accounts; // accountNumber -> BankAccount
+    map<string, BankAccount> accounts;
     string filename = "accounts.txt";
-    int nextAccountNumber = 1001;      // Auto-increments for each new account
+    int nextAccountNumber = 1001;
 
     // Generate unique account number
     string generateAccountNumber()
@@ -192,7 +191,6 @@ public:
         cout << "  1. Savings\n";
         cout << "  2. Current\n";
         cout << "Choose (1 or 2): ";
-
         int typeChoice;
         cin >> typeChoice;
         type = (typeChoice == 1) ? "Savings" : "Current";
@@ -228,7 +226,6 @@ public:
         cout << "Enter Account Number: ";
         cin >> accNum;
 
-        // Check if account exists
         if (accounts.find(accNum) == accounts.end())
         {
             cout << "\n❌ Account not found!\n";
@@ -238,7 +235,6 @@ public:
         cout << "Enter PIN: ";
         cin >> pin;
 
-        // Verify PIN
         if (!accounts.at(accNum).verifyPin(pin))
         {
             cout << "\n❌ Incorrect PIN!\n";
@@ -249,6 +245,50 @@ public:
              << accounts.at(accNum).getHolderName() << "!\n";
 
         return &accounts.at(accNum);
+    }
+
+    // -----------------------------------------------
+    //  Delete Account
+    // -----------------------------------------------
+    void deleteAccount()
+    {
+        string accNum, pin;
+
+        cout << "\n============= DELETE ACCOUNT =============\n";
+        cout << "Enter Account Number: ";
+        cin >> accNum;
+
+        if (accounts.find(accNum) == accounts.end())
+        {
+            cout << "\n❌ Account not found!\n";
+            return;
+        }
+
+        cout << "Enter PIN to confirm: ";
+        cin >> pin;
+
+        if (!accounts.at(accNum).verifyPin(pin))
+        {
+            cout << "\n❌ Incorrect PIN! Deletion cancelled.\n";
+            return;
+        }
+
+        string name = accounts.at(accNum).getHolderName();
+
+        char confirm;
+        cout << "\n⚠️  Are you sure you want to delete " << name << "'s account? (y/n): ";
+        cin >> confirm;
+
+        if (confirm == 'y' || confirm == 'Y')
+        {
+            accounts.erase(accNum);
+            saveToFile();
+            cout << "\n✓ Account deleted successfully!\n";
+        }
+        else
+        {
+            cout << "\n✓ Deletion cancelled.\n";
+        }
     }
 
     // -----------------------------------------------
@@ -263,14 +303,12 @@ public:
         cout << "Enter recipient account number: ";
         cin >> targetAccNum;
 
-        // Check recipient exists
         if (accounts.find(targetAccNum) == accounts.end())
         {
             cout << "\n❌ Recipient account not found!\n";
             return;
         }
 
-        // Can't transfer to yourself
         if (targetAccNum == sender->getAccountNumber())
         {
             cout << "\n❌ Cannot transfer to your own account!\n";
@@ -280,15 +318,11 @@ public:
         cout << "Enter amount to transfer: $";
         cin >> amount;
 
-        // Deduct from sender
         if (sender->transfer(amount))
         {
-            // Add to receiver
             accounts.at(targetAccNum).receiveTransfer(amount, sender->getAccountNumber());
 
-            // Log in sender history
-            string trans = "Transferred $" + to_string(amount) +
-                           " to A/C: " + targetAccNum;
+            string trans = "Transferred $" + to_string(amount) + " to A/C: " + targetAccNum;
             sender->addTransaction(trans);
 
             cout << "\n✓ Transfer successful!\n";
@@ -310,17 +344,16 @@ public:
         {
             BankAccount& acc = pair.second;
             file << acc.getAccountNumber() << "|"
-                 << acc.getHolderName() << "|"
-                 << acc.getPin() << "|"
-                 << acc.getAccountType() << "|"
-                 << acc.getBalance() << "|";
+                 << acc.getHolderName()    << "|"
+                 << acc.getPin()           << "|"
+                 << acc.getAccountType()   << "|"
+                 << acc.getBalance()       << "|";
 
-            // Save transactions
             vector<string> trans = acc.getTransactions();
             file << trans.size() << "|";
             for (auto& t : trans)
             {
-                file << t << "~"; // Use ~ as transaction separator
+                file << t << "~";
             }
             file << endl;
         }
@@ -341,29 +374,27 @@ public:
         {
             if (line.empty()) continue;
 
-            // Parse each field
             string accNum, name, pin, type;
             double balance;
             int transCount;
 
             size_t pos = 0;
             auto nextField = [&]() {
-                size_t end = line.find('|', pos);
+                size_t end   = line.find('|', pos);
                 string field = line.substr(pos, end - pos);
-                pos = end + 1;
+                pos          = end + 1;
                 return field;
             };
 
-            accNum    = nextField();
-            name      = nextField();
-            pin       = nextField();
-            type      = nextField();
-            balance   = stod(nextField());
+            accNum     = nextField();
+            name       = nextField();
+            pin        = nextField();
+            type       = nextField();
+            balance    = stod(nextField());
             transCount = stoi(nextField());
 
             BankAccount acc(accNum, name, pin, type, 0);
 
-            // Load transactions
             string transData = line.substr(pos);
             size_t tPos = 0;
             for (int i = 0; i < transCount; i++)
@@ -379,11 +410,133 @@ public:
 
         file.close();
 
-        // Update next account number
         if (!accounts.empty())
         {
-            string lastAcc = accounts.rbegin()->first;
+            string lastAcc    = accounts.rbegin()->first;
             nextAccountNumber = stoi(lastAcc.substr(3)) + 1;
         }
     }
 };
+
+// ================================================================
+//  Account Dashboard - Menu after login
+// ================================================================
+void accountDashboard(BankAccount* acc, BankingSystem* bank)
+{
+    int choice;
+
+    while (true)
+    {
+        cout << "\n========== ACCOUNT DASHBOARD ==========\n";
+        cout << "Welcome, " << acc->getHolderName() << "!\n";
+        cout << "Balance: $" << fixed << setprecision(2) << acc->getBalance() << "\n";
+        cout << "----------------------------------------\n";
+        cout << "1. Deposit Money\n";
+        cout << "2. Withdraw Money\n";
+        cout << "3. Transfer Money\n";
+        cout << "4. Account Information\n";
+        cout << "5. Transaction History\n";
+        cout << "6. Logout\n";
+        cout << "========================================\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+        {
+            double amount;
+            cout << "\nEnter deposit amount: $";
+            cin >> amount;
+            acc->deposit(amount);
+            bank->saveToFile();
+            break;
+        }
+        case 2:
+        {
+            double amount;
+            cout << "\nEnter withdrawal amount: $";
+            cin >> amount;
+            acc->withdraw(amount);
+            bank->saveToFile();
+            break;
+        }
+        case 3:
+            bank->transferMoney(acc);
+            break;
+
+        case 4:
+            acc->displayAccountInfo();
+            break;
+
+        case 5:
+            acc->displayTransactionHistory();
+            break;
+
+        case 6:
+            cout << "\n✓ Logged out successfully!\n";
+            return;
+
+        default:
+            cout << "\n❌ Invalid choice! Try again.\n";
+        }
+    }
+}
+
+// ================================================================
+//  Main Function - Entry Point
+// ================================================================
+int main()
+{
+    BankingSystem bank;
+    int choice;
+
+    cout << "\n";
+    cout << "==================================================\n";
+    cout << "        WELCOME TO C++ BANKING SYSTEM\n";
+    cout << "             ATM SIMULATOR v1.0\n";
+    cout << "==================================================\n";
+
+    while (true)
+    {
+        cout << "\n================ MAIN MENU ================\n";
+        cout << "1. Create New Account\n";
+        cout << "2. Login to Account\n";
+        cout << "3. Delete Account\n";
+        cout << "4. Exit\n";
+        cout << "===========================================\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+        case 1:
+            bank.createAccount();
+            break;
+
+        case 2:
+        {
+            BankAccount* acc = bank.login();
+            if (acc != nullptr)
+            {
+                accountDashboard(acc, &bank);
+            }
+            break;
+        }
+
+        case 3:
+            bank.deleteAccount();
+            break;
+
+        case 4:
+            cout << "\n✓ Thank you for using C++ Banking System!\n";
+            cout << "  Goodbye!\n";
+            return 0;
+
+        default:
+            cout << "\n❌ Invalid choice! Try again.\n";
+        }
+    }
+
+    return 0;
+}
