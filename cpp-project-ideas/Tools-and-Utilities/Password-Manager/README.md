@@ -1,4 +1,3 @@
----
 # 🔐 Password Manager & Vault
 
 **Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐ | **Status:** 📋 Planned
