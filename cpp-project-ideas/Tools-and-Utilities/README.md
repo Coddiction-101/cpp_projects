@@ -7,7 +7,7 @@ Practical, real-world C++ tools that solve everyday problems. These projects foc
 | # | Project | Difficulty | Status | New Concepts |
 |---|---|---|---|---|
 | 01 | [Task Manager & Scheduler](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) | ⭐⭐⭐ | ✅ Built | - |
-| 02 | [Banking System - ATM Simulator](./Banking-System/README.md) | ⭐⭐⭐⭐ | ✅ Built | Map, Pointers |
+| 02 | [Banking System - ATM Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) | ⭐⭐⭐⭐ | ✅ Built | Map, Pointers |
 | 03 | [File Organizer](./File-Organizer/README.md) | ⭐⭐⭐ | 🔨 In Progress | Filesystem, Recursion |
 | 04 | [Password Manager](./Password-Manager/README.md) | ⭐⭐⭐ | 📋 Planned | Encryption, Hashing |
 | 05 | [Resource Monitor](./Resource-Monitor/README.md) | ⭐⭐⭐⭐ | 📋 Planned | System Calls, Threading |
