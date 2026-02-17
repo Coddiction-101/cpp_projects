@@ -47,4 +47,4 @@ Start from the top - each project introduces new concepts that prepare you for t
 
 ---
 
-[← Back to Master Index](../README.md)
+[← Back to Master Index](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas)
