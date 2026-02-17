@@ -12,9 +12,10 @@ A curated collection of C++ project ideas organized by category. Each project in
 
 | Category | Projects | Status |
 |---|---|---|
-| [🛠️ Tools & Utilities](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities) | 6 | 🔨 In Progress |
+| [🛠️ Tools & Utilities](./Tools-and-Utilities/README.md) | 8 | 🔨 In Progress |
+| [🎮 Games & Simulations](./Games-and-Simulations/README.md) | 6 | 📋 Planned |
 
-> More categories coming soon: Games & Simulations, DSA & Algorithms, Systems & Low-level, Networking, Security, Data & Finance
+> More categories coming soon: DSA & Algorithms, Systems & Low-level, Networking, Security, Data & Finance
 
 ---
 
@@ -22,14 +23,14 @@ A curated collection of C++ project ideas organized by category. Each project in
 
 | Project | Category | Status | Difficulty |
 |---|---|---|---|
-| [Task Manager & Scheduler](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) | Tools & Utilities | ✅ Built | ⭐⭐⭐ |
-| [Banking System - ATM Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) | Tools & Utilities | ✅ Built | ⭐⭐⭐⭐ |
-| [File Organizer](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/File-Organizer) | Tools & Utilities | 🔨 In Progress | ⭐⭐⭐ |
-| [Password Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Password-Manager) | Tools & Utilities | 📋 Planned | ⭐⭐⭐ |
-| [Resource Monitor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Resource-Monitor) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
-| [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐⭐ |
-| [Expression Calculator](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Expression-Calculator) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
-| [Port Scanner](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Port-Scanner) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
+| [Task Manager & Scheduler](./Tools-and-Utilities/Task-Manager/README.md) | Tools & Utilities | ✅ Built | ⭐⭐⭐ |
+| [Banking System - ATM Simulator](./Tools-and-Utilities/Banking-System/README.md) | Tools & Utilities | ✅ Built | ⭐⭐⭐⭐ |
+| [File Organizer](./Tools-and-Utilities/File-Organizer/README.md) | Tools & Utilities | 🔨 In Progress | ⭐⭐⭐ |
+| [Password Manager](./Tools-and-Utilities/Password-Manager/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐ |
+| [Resource Monitor](./Tools-and-Utilities/Resource-Monitor/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
+| [Terminal Text Editor](./Tools-and-Utilities/Terminal-Text-Editor/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐⭐ |
+| [Expression Calculator](./Tools-and-Utilities/Expression-Calculator/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
+| [Port Scanner](./Tools-and-Utilities/Port-Scanner/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 
 ---
 
@@ -38,12 +39,12 @@ A curated collection of C++ project ideas organized by category. Each project in
 ### ✅ Task Manager & Scheduler
 > A console-based task management system with priority filtering, deadlines, and persistent storage.
 - **Concepts:** OOP, Vectors, File I/O
-- **Repo:** [View Code](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular)
+- **Repo:** [View Code](#)
 
 ### ✅ Banking System - ATM Simulator
 > A full ATM simulator with account management, PIN authentication, transfers, and transaction history.
 - **Concepts:** OOP, Map, Pointers, File I/O, Authentication
-- **Repo:** [View Code](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation)
+- **Repo:** [View Code](#)
 
 ---
 
