@@ -28,7 +28,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 | [Password Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Password-Manager) | Tools & Utilities | 📋 Planned | ⭐⭐⭐ |
 | [Resource Monitor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Resource-Monitor) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 | [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐⭐ |
-| [Expression Calculator](./Tools-and-Utilities/Expression-Calculator/README.md) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
+| [Expression Calculator](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Expression-Calculator) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 | [Port Scanner](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Port-Scanner) | Tools & Utilities | 📋 Planned | ⭐⭐⭐⭐ |
 
 ---
