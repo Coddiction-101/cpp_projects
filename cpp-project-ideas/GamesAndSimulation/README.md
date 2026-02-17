@@ -11,7 +11,7 @@ Fun, logic-heavy C++ projects that teach real-time input, game state management,
 | 03 | [Zombie Survival Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Zombie-Survival) | ⭐⭐⭐⭐ | 📋 Planned | Random events, Game state, Day/night cycle |
 | 04 | [Minesweeper](./Minesweeper/README.md) | ⭐⭐⭐ | 📋 Planned | 2D grid logic, Flood fill algorithm |
 | 05 | [Typing Speed Tester](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Typing-Speed-Tester) | ⭐⭐ | 📋 Planned | Real-time input, Timer, String comparison |
-| 06 | [Maze Generator & Solver](./Maze-Generator/README.md) | ⭐⭐⭐⭐ | 📋 Planned | Recursive backtracking, BFS/DFS pathfinding |
+| 06 | [Maze Generator & Solver](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/GamesAndSimulation/Maze-Generator) | ⭐⭐⭐⭐ | 📋 Planned | Recursive backtracking, BFS/DFS pathfinding |
 
 ---
 
