@@ -38,7 +38,7 @@ A curated collection of C++ project ideas organized by category. Each project in
 ### ✅ Task Manager & Scheduler
 > A console-based task management system with priority filtering, deadlines, and persistent storage.
 - **Concepts:** OOP, Vectors, File I/O
-- **Repo:** [View Code](#)
+- **Repo:** [View Code](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular)
 
 ### ✅ Banking System - ATM Simulator
 > A full ATM simulator with account management, PIN authentication, transfers, and transaction history.
