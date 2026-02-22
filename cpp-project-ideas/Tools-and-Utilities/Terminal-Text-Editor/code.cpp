@@ -1,64 +1,61 @@
 #include <iostream>
 #include <conio.h>
+#include <fstream>
+#include <vector>
+#include <string>
 using namespace std;
 
-void clearScreen()
+class textEditor
 {
-   cout << "\033[2J\033[H"; // ✅ No ] at the end
-}
+private:
+   vector<string> lines;
+   int cursorRow = 0;
+   int cursorCol = 0;
+   string filename = "untitled.txt";
 
-void moveCursor(int row, int col)
-{
-   cout << "\033[" << row << ";" << col << "H";
-}
+public:
+   textEditor()
+   {
+      lines.push_back("");
+   }
+
+   void clearScreen()
+   {
+      cout << "\033[2J\033[H";
+   }
+
+   int moveCursor(int row, int col)
+   {
+      cout << "\033[" << (row + 1) << ";" << (col + 1) << "H";
+   }
+
+   void display()
+   {
+      clearScreen();
+
+      for (int i = 0; i < lines.size(); i++)
+      {
+         cout << lines[i] << "\n";
+      }
+
+      moveCursor(24, 0);
+      cout << "_______________________________________________________";
+      moveCursor(25, 0);
+      cout << " " << filename << " | Ctrl + S: Save | Ctrl + Q: Quit";
+
+      // moving the cursor by position
+      moveCursor(cursorRow, cursorCol);
+      cout << flush;
+   }
+};
 
 int main()
 {
-   clearScreen();
-   int cursorRow = 10;
-   int cursorCol = 20;
+   textEditor editor;
+   editor.display();
 
-   cout << "Use array key to move. ESC to quit.\n";
-   while (true)
-   {
-      moveCursor(cursorRow, cursorCol);
-      cout << "*" << flush;
+   cout << "\n\nPress any key...";
+   _getch();
 
-      if (_kbhit())
-      {
-         int ch = _getch();
-
-         if (ch == 27)
-            break;
-
-         if (ch == 0 || ch == 224)
-         {
-            ch = _getch();
-
-            moveCursor(cursorRow, cursorCol);
-            cout << " ";
-
-            if (ch == 72)
-               cursorRow--; // UP
-            if (ch == 80)
-               cursorRow++; // DOWN
-            if (ch == 75)
-               cursorCol--; // Left
-            if (ch == 77)
-               cursorCol++; // Right
-
-            // Bounderies
-            if (cursorRow < 2)
-               cursorRow = 2;
-            if (cursorRow > 20)
-               cursorRow = 20;
-            if (cursorCol < 1)
-               cursorCol = 1;
-            if (cursorCol > 40)
-               cursorCol = 40;
-         }
-      }
-   }
-   clearScreen();
    return 0;
 }
