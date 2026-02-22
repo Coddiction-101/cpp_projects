@@ -165,7 +165,7 @@ TextEditor Class
 
 ## 🔗 Related Projects
 - [Task Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) - First C++ project (OOP, vectors, file I/O)
-- [Banking System](../Banking-System/README.md) - Second project (maps, pointers, authentication)
+- [Banking System](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) - Second project (maps, pointers, authentication)
 
 ---
 
