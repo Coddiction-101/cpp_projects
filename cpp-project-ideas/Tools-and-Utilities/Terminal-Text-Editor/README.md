@@ -1,5 +1,9 @@
 # 📝 Terminal Text Editor
-**Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐⭐⭐ | **Status:** ✅ v2.1 Complete
+**Category:** Tools & Utilities 
+
+| **Difficulty:** ⭐⭐⭐⭐⭐ 
+
+| **Status:** ✅ v2.1 Complete
 
 ---
 
