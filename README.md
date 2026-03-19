@@ -19,7 +19,7 @@ This repo documents my C++ learning journey through hands-on project building. E
 |---|---|---|---|---|
 | 01 | [Task Manager & Scheduler](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) | Console task management with priorities, deadlines & color UI | ⭐⭐⭐ | OOP, Vectors, File I/O, ANSI colors |
 | 02 | [Banking System - ATM Simulator](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) | Full ATM simulator with authentication & transactions | ⭐⭐⭐⭐ | OOP, Map, Pointers, File I/O |
-| 03 | [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/TerminalTextEditor) | Fully functional terminal editor with search, undo/redo & scrollbar | ⭐⭐⭐⭐⭐ | Raw input, Win32 API, ANSI codes, Snapshots |
+| 03 | [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor) | Fully functional terminal editor with search, undo/redo & scrollbar | ⭐⭐⭐⭐⭐ | Raw input, Win32 API, ANSI codes, Snapshots |
 
 ---
 
