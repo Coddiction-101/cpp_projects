@@ -159,7 +159,7 @@ Ctrl+Y  Redo       Ctrl+Q  Quit       Tab     Indent
 ```
 
 ### Repo Link
-[View on GitHub](https://github.com/Coddiction-101/cpp_projects/tree/main/TerminalTextEditor)
+[View on GitHub](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor)
 
 ---
 
