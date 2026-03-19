@@ -1,18 +1,18 @@
 # 📝 Terminal Text Editor
-**Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐⭐⭐ | **Status:** ✅ v1.0 Complete
+**Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐⭐⭐ | **Status:** ✅ v2.1 Complete
 
 ---
 
 ## 📌 Overview
-A fully functional terminal text editor built from scratch in C++. Edit text files directly in the console with real-time keyboard input, cursor control, and file saving - all without any external libraries.
+A fully functional terminal text editor built from scratch in C++. Edit text files directly in the console with real-time keyboard input, cursor control, search, undo/redo, and file persistence — all without any external libraries.
 
-This project demonstrates low-level terminal control, buffer management using STL vectors, and building complex interactive software from scratch.
+This project demonstrates low-level terminal control, buffer management using STL vectors, snapshot-based undo/redo, and building complex interactive software from scratch.
 
 ---
 
 ## ✨ Features
 
-### Version 1.0 (Current) ✅
+### Version 1.0 ✅
 - ✅ Real-time character input (no Enter required)
 - ✅ Arrow key navigation (↑ ↓ ← →)
 - ✅ Multi-line text editing
@@ -21,30 +21,46 @@ This project demonstrates low-level terminal control, buffer management using ST
 - ✅ Save file with Ctrl+S
 - ✅ Quit with Ctrl+Q
 - ✅ Status bar showing filename and shortcuts
-- ✅ ANSI escape codes for cursor control
+- ✅ Windows console cursor control via Win32 API
 
-### Version 2.0 (Planned) 📋
-- [ ] Open existing files (command-line argument)
-- [ ] Line numbers display
-- [ ] Search functionality (Ctrl+F)
-- [ ] Visual "Saved!" confirmation message
-- [ ] Multiple file tabs
-- [ ] Copy/paste support
-- [ ] Undo/redo functionality
-- [ ] Basic syntax highlighting
+### Version 2.0 ✅
+- ✅ Open existing files via command-line argument
+- ✅ Line numbers (dynamic width, scales to 100+ lines)
+- ✅ Search functionality (Ctrl+F) with match highlighting
+- ✅ Visual "Saved!" confirmation message
+- ✅ Modified flag (`*filename` when unsaved changes exist)
+- ✅ Quit guard — prompts before discarding unsaved changes
+- ✅ Dynamic status bar (no hardcoded row — adapts to terminal height)
+- ✅ Fixed word count logic
+
+### Version 2.1 ✅
+- ✅ Scroll indicator — `Ln / Col / %` position in status bar
+- ✅ Visual scrollbar on far right with proportional thumb block
+- ✅ Auto-indentation — Enter inherits leading whitespace from current line
+- ✅ Tab key support — inserts 4 spaces (soft tab)
+- ✅ Copy line (Ctrl+C) and paste line below (Ctrl+V)
+- ✅ Ctrl+N — find next search match with wraparound
+- ✅ Undo (Ctrl+Z) / Redo (Ctrl+Y) — snapshot-based, 50-level history
 
 ---
 
-## 🧠 Concepts Used
+## ⌨️ Keyboard Shortcuts
 
-| Concept | Status |
-|---------|--------|
-| OOP (Classes & Objects) | ✅ Used |
-| STL Vectors for buffer | ✅ Used |
-| File I/O with fstream | ✅ Used |
-| Raw terminal input (`_kbhit()`, `_getch()`) | ✅ Learned & Used |
-| ANSI escape codes for cursor | ✅ Learned & Used |
-| Buffer management with vector<string> | ✅ Learned & Used |
+| Key | Action |
+|-----|--------|
+| Type | Insert characters at cursor |
+| ↑ ↓ ← → | Move cursor |
+| Enter | New line (with auto-indent) |
+| Backspace | Delete character |
+| Tab | Insert 4 spaces |
+| Ctrl+S | Save file |
+| Ctrl+F | Find / search |
+| Ctrl+N | Find next match |
+| Ctrl+C | Copy current line |
+| Ctrl+V | Paste line below cursor |
+| Ctrl+Z | Undo |
+| Ctrl+Y | Redo |
+| Ctrl+Q | Quit (prompts if unsaved) |
 
 ---
 
@@ -52,27 +68,14 @@ This project demonstrates low-level terminal control, buffer management using ST
 
 ### Compile
 ```bash
-g++ text_editor.cpp -o text_editor
+g++ -std=c++17 text_editor.cpp -o text_editor
 ```
 
 ### Run
 ```bash
-./text_editor        # Linux/Mac
-text_editor.exe      # Windows
+text_editor.exe              # New file (saved as untitled.txt)
+text_editor.exe myfile.txt   # Open existing file or create named file
 ```
-
-### Keyboard Shortcuts
-| Key | Action |
-|-----|--------|
-| Type | Insert characters at cursor |
-| ↑ ↓ ← → | Move cursor |
-| Enter | New line |
-| Backspace | Delete character |
-| Ctrl+S | Save file |
-| Ctrl+Q | Quit editor |
-
-### Output
-- Creates/saves to `untitled.txt` in the current directory
 
 ---
 
@@ -81,74 +84,81 @@ text_editor.exe      # Windows
 ### Architecture
 ```
 TextEditor Class
-├── vector<string> lines     ← Text buffer (each string = one line)
-├── int cursorRow            ← Current cursor position (row)
-├── int cursorCol            ← Current cursor position (column)
-├── string filename          ← File to save to
+├── vector<string> lines        ← Text buffer (each string = one line)
+├── int cursorRow / cursorCol   ← Current cursor position
+├── int scrollOffset            ← First visible line index
+├── string filename             ← Active file name
+├── bool modified               ← Unsaved changes flag
+├── string clipboard            ← Line-based clipboard
+├── vector<EditorState> undoStack / redoStack  ← Snapshot history
+├── string searchTerm           ← Active search term
 │
-├── display()                ← Render all lines + status bar
-├── insertChar()             ← Insert character at cursor
-├── deleteChar()             ← Backspace functionality
-├── newLine()                ← Split line at cursor
-├── moveUp/Down/Left/Right() ← Cursor navigation
-└── save()                   ← Write buffer to file
+├── display()                   ← Full redraw: text + scrollbar + status bar
+├── refreshCursor()             ← Lightweight: reposition cursor only
+├── insertChar()                ← Insert character, push undo snapshot
+├── deleteChar()                ← Backspace, merge lines if at col 0
+├── newLine()                   ← Split line at cursor + auto-indent
+├── insertTab()                 ← Insert 4 spaces (soft tab)
+├── moveUp/Down/Left/Right()    ← Cursor navigation with line wrapping
+├── updateScroll()              ← Keep cursor in visible window
+├── startSearch()               ← Interactive Ctrl+F prompt in status bar
+├── findNext()                  ← Search forward with wraparound
+├── copyLine() / pasteLine()    ← Line clipboard operations
+├── undo() / redo()             ← Snapshot restore from history stacks
+└── save() / loadFile()         ← File I/O with fstream
 ```
 
 ### Key Technologies
-- **Raw Input:** `_kbhit()` detects keypresses, `_getch()` reads them without waiting for Enter
-- **ANSI Codes:** `\033[row;colH` moves cursor, `\033[2J` clears screen
-- **Buffer:** `vector<string>` stores all lines, insert/erase operations modify text
-- **Arrow Keys:** Detected as two-byte sequences (224 prefix + direction code)
+
+| Technology | What it does |
+|---|---|
+| `_kbhit()` / `_getch()` | Real-time input — no Enter key needed |
+| `SetConsoleCursorPosition()` | Moves cursor to exact row/col via Win32 API |
+| `GetConsoleScreenBufferInfo()` | Reads terminal dimensions dynamically |
+| `vector<string>` | Line buffer — each element is one line of text |
+| `ANSI escape codes` | `\033[7m` for search highlight, `\033[32m` for green status |
+| `EditorState` struct | Snapshot of lines + cursor for undo/redo |
+| `vector<EditorState>` stacks | LIFO undo/redo history (capped at 50 states) |
+
+### Undo/Redo Design
+Snapshot-based: before every edit operation, the current state (all lines + cursor position) is pushed onto the undo stack. Undo pops from undo → pushes to redo. Redo pops from redo → pushes to undo. Any new edit clears the redo stack. Capped at 50 snapshots to limit memory use.
+
+### Scrollbar Design
+The scrollbar occupies the last column of the terminal. Thumb size is proportional to `visible_rows / total_lines`. Thumb position maps `scrollOffset` into the available track height. Rendered using ANSI inverse video (`\033[7m`) for the thumb and dim (`\033[2m`) for the track.
+
+---
+
+## 🧠 Concepts Used
+
+| Concept | Introduced In |
+|---------|--------------|
+| OOP (Classes & Objects) | v1.0 |
+| STL Vectors for buffer | v1.0 |
+| File I/O with fstream | v1.0 |
+| Raw terminal input (`_kbhit`, `_getch`) | v1.0 |
+| Win32 API for cursor control | v1.0 |
+| ANSI escape codes | v1.0 |
+| Dynamic terminal dimensions | v2.0 |
+| String search (`string::find`) | v2.0 |
+| Viewport scrolling logic | v2.1 |
+| Stack-based undo/redo (snapshots) | v2.1 |
+| Soft tabs / auto-indentation | v2.1 |
 
 ---
 
 ## 📖 What I Learned
 
 ### Before This Project
-- Basic C++ syntax, OOP, file I/O
-- Standard console input with `cin`
+- Basic C++ syntax, OOP, STL containers, file I/O
 
 ### After This Project
-- How text editors work internally
-- Terminal control without libraries
-- Real-time input capture (no Enter key)
-- ANSI escape sequences for cursor manipulation
-- Efficient text buffer management
-- Building complex interactive console applications
-
----
-
-## 🐛 Known Limitations (v1.0)
-
-- Cannot open existing files (creates new file only)
-- No visual feedback after save
-- No line numbers
-- No search functionality
-- Limited to terminal size (no scrolling)
-- No syntax highlighting
-
-*These will be addressed in v2.0*
-
----
-
-## 🔮 Future Enhancements (v2.0+)
-
-### High Priority
-- Open existing files via command-line argument
-- Line numbers on the left margin
-- Ctrl+F search with highlighting
-- "File saved!" status message
-
-### Medium Priority
-- Vertical scrolling for large files
-- Multiple file tabs
-- Ctrl+Z undo / Ctrl+Y redo
-
-### Low Priority
-- Syntax highlighting for C++/Python/etc
-- Copy/paste (Ctrl+C, Ctrl+V)
-- Find & replace
-- Auto-indentation
+- How text editors manage buffers internally
+- Real-time input capture without Enter key
+- Terminal/console control via Win32 API
+- Viewport scrolling with offset clamping
+- Snapshot-based undo/redo using structs + stacks
+- ANSI escape sequences for highlighting and color
+- Building complex, stateful interactive console apps
 
 ---
 
@@ -156,16 +166,36 @@ TextEditor Class
 
 | Metric | Value |
 |--------|-------|
-| Lines of Code | ~200 |
-| Development Time | 1 day |
-| Concepts Learned | 3 new (raw input, ANSI codes, buffer mgmt) |
-| Version | 1.0 |
+| Lines of Code | ~450 |
+| Versions | 3 (v1.0 → v2.0 → v2.1) |
+| New Concepts Learned | 6+ |
+| Undo History Depth | 50 snapshots |
+| External Libraries | None |
+
+---
+
+## 🔮 Future Enhancements (v3.0+)
+
+### High Priority
+- Syntax highlighting for C++ / Python / JSON
+- Find & replace (Ctrl+H)
+- Select text with Shift + arrow keys
+
+### Medium Priority
+- Multiple file tabs
+- Horizontal scrolling for long lines
+- Jump to line number (Ctrl+G)
+
+### Low Priority
+- Mouse click to reposition cursor
+- Line wrapping toggle
+- Config file (custom tab width, theme)
 
 ---
 
 ## 🔗 Related Projects
-- [Task Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) - First C++ project (OOP, vectors, file I/O)
-- [Banking System](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) - Second project (maps, pointers, authentication)
+- [Task Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) — OOP, vectors, file I/O
+- [Banking System](https://github.com/Coddiction-101/cpp_projects/tree/main/BankingSimulation) — maps, pointers, authentication
 
 ---
 
