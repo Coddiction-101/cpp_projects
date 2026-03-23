@@ -340,7 +340,7 @@ The C++ class structure (Sequence, ScoreManager, Level, Mode) maps 1:1 to TypeSc
 
 ## 🔗 Related Projects
 - [Task Manager](https://github.com/Coddiction-101/cpp_projects/tree/main/TaskManager%26Schedular) — OOP, vectors, file I/O
-- [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/TerminalTextEditor) — raw input, ANSI, timers
+- [Terminal Text Editor](https://github.com/Coddiction-101/cpp_projects/tree/main/cpp-project-ideas/Tools-and-Utilities/Terminal-Text-Editor) — raw input, ANSI, timers
 
 ---
 
