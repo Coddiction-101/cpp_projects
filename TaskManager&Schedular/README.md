@@ -1,5 +1,5 @@
 # 📋 Task Manager & Scheduler
-**Category:** Tools & Utilities | **Difficulty:** ⭐⭐⭐ | **Status:** ✅ v2.0 Complete
+**Category:** Tools & Utilities | **Status:** ✅ v2.0 Complete
 
 ---
 
