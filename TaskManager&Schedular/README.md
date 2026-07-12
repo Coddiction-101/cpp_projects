@@ -2,9 +2,6 @@
 
 A command-line task management system built in C++ to organize daily tasks with priorities, deadlines, and persistent file storage.
 
-**Category:** Tools & Utilities
-**Status:** Complete
-
 ---
 
 ## Features
