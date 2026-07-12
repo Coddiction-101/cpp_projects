@@ -7,11 +7,6 @@
 #include <string>
 using namespace std;
 
-// ================================================================
-//  Banking System - ATM Simulator v1.0
-//  Features: Account Management, Transactions, File Persistence
-// ================================================================
-
 class BankAccount
 {
 private:
@@ -23,32 +18,28 @@ private:
     vector<string> transactionHistory;
 
 public:
-    // Constructor
     BankAccount(string accNum, string name, string p, string type, double initialBalance = 0)
     {
-        accountNumber  = accNum;
-        holderName     = name;
-        pin            = p;
-        accountType    = type;
-        balance        = initialBalance;
+        accountNumber = accNum;
+        holderName = name;
+        pin = p;
+        accountType = type;
+        balance = initialBalance;
 
         string transaction = "Account created with balance: $" + to_string(initialBalance);
         transactionHistory.push_back(transaction);
     }
 
-    // Getters
     string getAccountNumber() { return accountNumber; }
-    string getHolderName()    { return holderName; }
-    string getAccountType()   { return accountType; }
-    double getBalance()       { return balance; }
+    string getHolderName() { return holderName; }
+    string getAccountType() { return accountType; }
+    double getBalance() { return balance; }
 
-    // PIN verification
     bool verifyPin(string enteredPin)
     {
         return pin == enteredPin;
     }
 
-    // Deposit money
     void deposit(double amount)
     {
         if (amount <= 0)
@@ -62,7 +53,6 @@ public:
         cout << "\n✓ Successfully deposited $" << fixed << setprecision(2) << amount << endl;
     }
 
-    // Withdraw money
     bool withdraw(double amount)
     {
         if (amount <= 0)
@@ -82,7 +72,6 @@ public:
         return true;
     }
 
-    // Transfer money (for sender)
     bool transfer(double amount)
     {
         if (amount <= 0)
@@ -99,7 +88,6 @@ public:
         return true;
     }
 
-    // Receive transfer (for receiver)
     void receiveTransfer(double amount, string fromAccount)
     {
         balance += amount;
@@ -107,13 +95,11 @@ public:
         transactionHistory.push_back(transaction);
     }
 
-    // Add transaction to history
     void addTransaction(string trans)
     {
         transactionHistory.push_back(trans);
     }
 
-    // Display account info
     void displayAccountInfo()
     {
         cout << "\n================ ACCOUNT INFORMATION ================\n";
@@ -124,7 +110,6 @@ public:
         cout << "=====================================================\n";
     }
 
-    // Display transaction history
     void displayTransactionHistory()
     {
         cout << "\n============== TRANSACTION HISTORY ==============\n";
@@ -142,14 +127,10 @@ public:
         cout << "=================================================\n";
     }
 
-    // File saving helpers
     string getPin() { return pin; }
     vector<string> getTransactions() { return transactionHistory; }
 };
 
-// ================================================================
-//  BankingSystem Class - Manages all accounts
-// ================================================================
 class BankingSystem
 {
 private:
@@ -157,22 +138,17 @@ private:
     string filename = "accounts.txt";
     int nextAccountNumber = 1001;
 
-    // Generate unique account number
     string generateAccountNumber()
     {
         return "ACC" + to_string(nextAccountNumber++);
     }
 
 public:
-    // Constructor - load accounts on startup
     BankingSystem()
     {
         loadFromFile();
     }
 
-    // -----------------------------------------------
-    //  Create New Account
-    // -----------------------------------------------
     void createAccount()
     {
         string name, pin, type;
@@ -215,10 +191,7 @@ public:
         saveToFile();
     }
 
-    // -----------------------------------------------
-    //  Login to Existing Account
-    // -----------------------------------------------
-    BankAccount* login()
+    BankAccount *login()
     {
         string accNum, pin;
 
@@ -247,9 +220,6 @@ public:
         return &accounts.at(accNum);
     }
 
-    // -----------------------------------------------
-    //  Delete Account
-    // -----------------------------------------------
     void deleteAccount()
     {
         string accNum, pin;
@@ -291,10 +261,7 @@ public:
         }
     }
 
-    // -----------------------------------------------
-    //  Transfer Between Accounts
-    // -----------------------------------------------
-    void transferMoney(BankAccount* sender)
+    void transferMoney(BankAccount *sender)
     {
         string targetAccNum;
         double amount;
@@ -333,25 +300,22 @@ public:
         }
     }
 
-    // -----------------------------------------------
-    //  Save All Accounts to File
-    // -----------------------------------------------
     void saveToFile()
     {
         ofstream file(filename);
 
-        for (auto& pair : accounts)
+        for (auto &pair : accounts)
         {
-            BankAccount& acc = pair.second;
+            BankAccount &acc = pair.second;
             file << acc.getAccountNumber() << "|"
-                 << acc.getHolderName()    << "|"
-                 << acc.getPin()           << "|"
-                 << acc.getAccountType()   << "|"
-                 << acc.getBalance()       << "|";
+                 << acc.getHolderName() << "|"
+                 << acc.getPin() << "|"
+                 << acc.getAccountType() << "|"
+                 << acc.getBalance() << "|";
 
             vector<string> trans = acc.getTransactions();
             file << trans.size() << "|";
-            for (auto& t : trans)
+            for (auto &t : trans)
             {
                 file << t << "~";
             }
@@ -361,36 +325,36 @@ public:
         file.close();
     }
 
-    // -----------------------------------------------
-    //  Load All Accounts from File
-    // -----------------------------------------------
     void loadFromFile()
     {
         ifstream file(filename);
-        if (!file) return;
+        if (!file)
+            return;
 
         string line;
         while (getline(file, line))
         {
-            if (line.empty()) continue;
+            if (line.empty())
+                continue;
 
             string accNum, name, pin, type;
             double balance;
             int transCount;
 
             size_t pos = 0;
-            auto nextField = [&]() {
-                size_t end   = line.find('|', pos);
+            auto nextField = [&]()
+            {
+                size_t end = line.find('|', pos);
                 string field = line.substr(pos, end - pos);
-                pos          = end + 1;
+                pos = end + 1;
                 return field;
             };
 
-            accNum     = nextField();
-            name       = nextField();
-            pin        = nextField();
-            type       = nextField();
-            balance    = stod(nextField());
+            accNum = nextField();
+            name = nextField();
+            pin = nextField();
+            type = nextField();
+            balance = stod(nextField());
             transCount = stoi(nextField());
 
             BankAccount acc(accNum, name, pin, type, 0);
@@ -400,7 +364,8 @@ public:
             for (int i = 0; i < transCount; i++)
             {
                 size_t tEnd = transData.find('~', tPos);
-                if (tEnd == string::npos) break;
+                if (tEnd == string::npos)
+                    break;
                 acc.addTransaction(transData.substr(tPos, tEnd - tPos));
                 tPos = tEnd + 1;
             }
@@ -412,16 +377,13 @@ public:
 
         if (!accounts.empty())
         {
-            string lastAcc    = accounts.rbegin()->first;
+            string lastAcc = accounts.rbegin()->first;
             nextAccountNumber = stoi(lastAcc.substr(3)) + 1;
         }
     }
 };
 
-// ================================================================
-//  Account Dashboard - Menu after login
-// ================================================================
-void accountDashboard(BankAccount* acc, BankingSystem* bank)
+void accountDashboard(BankAccount *acc, BankingSystem *bank)
 {
     int choice;
 
@@ -483,9 +445,6 @@ void accountDashboard(BankAccount* acc, BankingSystem* bank)
     }
 }
 
-// ================================================================
-//  Main Function - Entry Point
-// ================================================================
 int main()
 {
     BankingSystem bank;
@@ -516,7 +475,7 @@ int main()
 
         case 2:
         {
-            BankAccount* acc = bank.login();
+            BankAccount *acc = bank.login();
             if (acc != nullptr)
             {
                 accountDashboard(acc, &bank);
